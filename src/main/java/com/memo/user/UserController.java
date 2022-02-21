@@ -2,8 +2,11 @@ package com.memo.user;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+// 화면용(view)
 @Controller
 @RequestMapping("/user")
 public class UserController {
@@ -21,5 +24,21 @@ public class UserController {
 	public String signInView(Model model) {
 		model.addAttribute("viewName","user/sign_in");
 		return "template/layout";
+	}
+	
+	@PostMapping("/sign_up_for_submit")
+	// 완료되면 로그인 화면으로 리다이렉트
+	public String signUpForSubmit(
+			@RequestParam("loginId") String loginId,
+			@RequestParam("password") String password,
+			@RequestParam("name") String name,
+			@RequestParam("email") String email
+			) {
+		
+		// db insert
+		
+		// 리다이렉트 => 로그인 화면으로 이동
+		return "redirect:/user/sign_in_view"; // redirect: 뒤에 절대경로 써주면 된다
+		
 	}
 }
