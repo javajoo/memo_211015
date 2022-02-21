@@ -1,4 +1,23 @@
 @charset "UTF-8";
-header {height: 100px;}
+
+header {
+	height: 100px; color: #A6A6A6;
+}
+
 .contents {height: 500px;}
-footer {height: 100px;}
+
+footer {
+	height: 100px;
+
+}
+
+input[type="text"] {
+	width: 300px;
+
+}
+
+button[type="button"] {
+	width: 300px;
+
+}
+

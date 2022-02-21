@@ -27,14 +27,14 @@
 </head>
 <body>
 	<div id="wrap">
-		<header class="bg-warning">
+		<header>
 		<!--상대경로 : ../ 내가 있던 폴더의 위쪽으로 이동 -->
 			<jsp:include page="../include/gnb.jsp" />
 		</header>
-		<section class="contents bg-danger">
+		<section class="contents">
 			<jsp:include page="../${viewName}.jsp" /> <!-- 서버가 내려준다. -->
 		</section>
-		<footer class="bg-success">
+		<footer>
 			<jsp:include page="../include/footer.jsp" />
 		</footer>
 	</div>
