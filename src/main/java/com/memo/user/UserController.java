@@ -26,19 +26,19 @@ public class UserController {
 		return "template/layout";
 	}
 	
-	@PostMapping("/sign_up_for_submit")
-	// 완료되면 로그인 화면으로 리다이렉트
-	public String signUpForSubmit(
-			@RequestParam("loginId") String loginId,
-			@RequestParam("password") String password,
-			@RequestParam("name") String name,
-			@RequestParam("email") String email
-			) {
-		
-		// db insert
-		
-		// 리다이렉트 => 로그인 화면으로 이동
-		return "redirect:/user/sign_in_view"; // redirect: 뒤에 절대경로 써주면 된다
-		
-	}
+//	@PostMapping("/sign_up_for_submit")
+//	// 완료되면 로그인 화면으로 리다이렉트
+//	public String signUpForSubmit(
+//			@RequestParam("loginId") String loginId,
+//			@RequestParam("password") String password,
+//			@RequestParam("name") String name,
+//			@RequestParam("email") String email
+//			) {
+//		
+//		// db insert
+//		
+//		// 리다이렉트 => 로그인 화면으로 이동
+//		return "redirect:/user/sign_in_view"; // redirect: 뒤에 절대경로 써주면 된다
+//		
+//	}
 }

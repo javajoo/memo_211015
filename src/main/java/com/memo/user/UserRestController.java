@@ -40,7 +40,7 @@ public class UserRestController {
 	
 	@PostMapping("/sign_up")
 	// 완료되면 로그인 화면으로 리다이렉트
-	public Map<String, Object> signUpForSubmit(
+	public Map<String, Object> signUp(
 			@RequestParam("loginId") String loginId,
 			@RequestParam("password") String password,
 			@RequestParam("name") String name,

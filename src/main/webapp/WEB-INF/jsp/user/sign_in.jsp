@@ -12,11 +12,11 @@
 	</div>
 	
 	<div class="d-flex justify-content-center mb-3">
-		<div><button type="button" id="signInBtn" class="btn-info form-control">로그인</button></div>
+		<button type="button" id="signInBtn" class="btn-info form-control">로그인</button>
 	</div>
 
 	<div class="d-flex justify-content-center mb-3">
-		<div><button type="button" id="signUpBtn" class="btn-secondary form-control">회원가입</button></div>
+		<button type="button" id="signUpBtn" class="btn-secondary form-control">회원가입</button>
 	</div>
 	
 	</div>

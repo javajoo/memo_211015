@@ -10,7 +10,7 @@
 			<td>
 				<div class="d-flex">
 					<input type="text" id="loginId" name="loginId" class="form-control" placeholder="아이디">
-					<div class="pl-3"><button type="button" id="loginIdCheckBtn" class="btn-success form-control">중복확인</button></div>
+					<div class="pl-3"><button type="button" id="loginIdCheckBtn" class="btn-success form-control col-4">중복확인</button></div>
 				</div>
 				
 				<!-- 아이디 체크 결과(모두 숨겨놓는다)div 안의 class에 속성넣어줘야 한다!!!! -->			
@@ -42,7 +42,7 @@
 	</table>
 	
 	<div class="d-flex justify-content-center">
-		<button type="submit" id="signUpBtn" class="form-control btn-info col-2">회원가입</button>
+		<button type="submit" id="signUpBtn" class="form-control btn-info col-1">회원가입</button>
 	</div>
 	</form>
 	
@@ -66,7 +66,7 @@
 					return;
 				}
 				
-				//ajax - 중복확인(api 호출)
+				//ajax - 중복확인(api 호출) 기존에 있는 데이터와 비교해야 해서
 				$.ajax({
 					type: "get"
 					,url: "/user/is_duplicated_id"
@@ -89,7 +89,7 @@
 			// 회원가입 -> 버튼을 눌렀을때 하거나 form id로(버튼-submit) 2가지 방법중 선택하면 된다
 			$('#signUpForm').on('submit',function(e) {
 				e.preventDefault(); // 서브밋 기능 중단(페이지 넘어가는거!!!!)
-				
+			
 				//validation check 
 				var loginId = $('#loginId').val().trim();
 				if (loginId == '') {
