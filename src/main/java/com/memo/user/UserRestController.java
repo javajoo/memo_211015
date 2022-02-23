@@ -83,7 +83,7 @@ public class UserRestController {
 	}
 	
 	/**
-	 * 
+	 * 로그인 - ajax 호출
 	 * @param loginId
 	 * @param password
 	 * @param request
@@ -127,6 +127,7 @@ public class UserRestController {
 		
 		return result;
 	}
+	
 	
 	
 	
