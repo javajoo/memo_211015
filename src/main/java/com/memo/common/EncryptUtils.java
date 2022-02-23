@@ -5,6 +5,7 @@ import java.security.NoSuchAlgorithmException;
 
 public class EncryptUtils {
 
+	 // 자바 bean 사용
      // static: new를 하지 않아도 바로 사용할 수 있다.
 	 // 비밀번호를 받아서  암호화 해주는 메서드
 	public static String md5(String message) {

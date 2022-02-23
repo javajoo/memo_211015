@@ -26,6 +26,7 @@
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 <body>
+	<!-- container는 레이아웃 에서만 쓰고 그 안에서는 안쓴다 -->
 	<div id="wrap">
 		<header>
 		<!--상대경로 : ../ 내가 있던 폴더의 위쪽으로 이동 -->

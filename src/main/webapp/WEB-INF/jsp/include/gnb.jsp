@@ -3,9 +3,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- 코어 라이브러리는 매 페이지마다 넣어줘야 한다 -->
 
-<div class="d-flex">
+<div class="d-flex pt-3">
 	<div class="col-2"></div>
-	<div class="display-4 font-weight-bold text-center col-8">Memo board</div>
+	<div class="display-4 font-weight-bold text-center col-8">Memo Board</div>
 	
 	
 	
