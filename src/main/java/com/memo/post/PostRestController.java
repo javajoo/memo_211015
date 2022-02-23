@@ -57,7 +57,7 @@ public class PostRestController {
 			return result;
 		}
 		
-		// userId, subject, content, file -> BO insert 요청
+		// userId, userLoginId, subject, content, file -> BO insert 요청
 		
 		
 		
