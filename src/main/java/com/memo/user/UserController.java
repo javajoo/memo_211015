@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class UserController {
 
 	/**
-	 * 회원가입 화면
+	 * 회원가입 화면면
 	 * @param model
 	 * @return
 	 */
