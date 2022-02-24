@@ -103,9 +103,13 @@
 					if (data.result == "success") {
 						alert("메모가 저장되었습니다.");
 						location.href = "/post/post_list_view"; // 글 목록 화면으로 이동
+					} else {
+						// 로그인 실패시
+						alert(data.errorMessage);
+						location.href= "/user/sign_in_view"; // 로그인 화면으로 이동
 					}
 				}
-				, error: function(e) {
+				, error: function(e) { // 서버에 들어오지도 못하면
 					alert("메모 저장에 실패했습니다. 관리자에게 문의해주세요.");
 				}
 			});
