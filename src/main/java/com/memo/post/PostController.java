@@ -50,4 +50,13 @@ public class PostController {
 		return "template/layout";
 	}
 
+	//localhost/post/post_detail_view
+	@RequestMapping("/post_detail_view")
+	public String postDetailView(Model model) {
+		model.addAttribute("viewName","post/post_detail");
+		return "template/layout";
+	}
+	
+	
+	
 }

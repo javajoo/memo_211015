@@ -4,19 +4,26 @@
 <form id="loginFrom" method="post" action="/user/sign_in">
 	<div class=" d-flex justify-content-center align-items-center">
 		<div class="h-50 m-3">
-			<div class="mb-4"><img src="/style/mainImage.jpg" width="300" height="200" alt="logoImage"></div>
-			<div>
-				<input type="text" id="loginId" name="loginId"class="form-control mb-3" placeholder="아이디">
+			<div class="login-box p-4 border rounded">
+				<div class="mb-4">
+					<img src="/style/mainImage.jpg" width="300" height="200"
+						alt="logoImage">
+				</div>
+				<div>
+					<input type="text" id="loginId" name="loginId"
+						class="form-control mb-3" placeholder="아이디">
+				</div>
+
+				<div>
+					<input type="password" id="password" name="password"
+						class="form-control mb-3" placeholder="비밀번호">
+				</div>
+
+				<button type="submit" id="signInBtn"
+					class="btn-info form-control  mb-3">로그인</button>
+
+				<a class="btn btn-secondary form-control" href="/user/sign_up_view ">회원가입</a>
 			</div>
-			
-			<div>
-				<input type="password" id="password" name="password" class="form-control mb-3" placeholder="비밀번호">
-			</div>
-
-			<button type="submit" id="signInBtn" class="btn-info form-control  mb-3">로그인</button>
-
-			<a class="btn btn-secondary form-control" href="/user/sign_up_view ">회원가입</a>
-
 		</div>
 	</div>
 </form>

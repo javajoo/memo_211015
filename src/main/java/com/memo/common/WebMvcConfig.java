@@ -16,6 +16,7 @@ public class WebMvcConfig implements WebMvcConfigurer{
 		// http://localhost/images/kimje205_165434132/sun.png
 		.addResourceHandler("/images/**") 	// ** 모든 주소
 		.addResourceLocations("file:///D:\\김은주\\6_spring-project\\memo\\workspace\\images/"); 
+		//C:\김은주java\6_spring_project\memo\workspace\images
 		//file:/// 앞에 /// 3개로 해줘야 한다
 		// 경로끝에/ 붙었는지랑 @Configuration 제대로 되었는지 확인하기
 
