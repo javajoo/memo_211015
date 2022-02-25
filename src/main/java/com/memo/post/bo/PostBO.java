@@ -12,33 +12,42 @@ import com.memo.post.model.Post;
 
 @Service
 public class PostBO {
-	
-	//@Autowired 여러번 할때는 각각 해줘야 한다!!!!
-	
+
+	// @Autowired 여러번 할때는 각각 해줘야 한다!!!!
+
 	@Autowired
 	private PostDAO postDAO;
-	
+
 	// FileManagerService의 @Component 사용하려면 새로 @Autowired 해줘야 한다!!!!
 	@Autowired
 	private FileManagerService fileManager;
 
-	public List<Post> getPostList() {
-		return postDAO.selectPostList();
+	//alt + shift + r: 부르고 있는 애들 이름다 바꾼다
+	public List<Post> getPostListByUserId(int userId) {
+		return postDAO.selectPostListByUserId(userId);
 	}
 	
+	// 단건
+	public Post getPostById(int id) {
+		return postDAO.selectPostById(id);
+	}
+	
+	
+	
+
 	// 가공, 로직을 하는 곳
 	// userId, userLoginId, subject, content, file
 	public void addPost(int userId, String userLoginId, String subject, String content, MultipartFile file) {
 		String imagePath = null;
-		
+
 		if (file != null) {
-			// FileManagerService  ->    input: MultipartFile     output: 이미지의 주소
+			// FileManagerService -> input: MultipartFile output: 이미지의 주소
 			imagePath = fileManager.saveFile(userLoginId, file); // 디버깅
 		}
-		
+
 		// insert DAO
 		postDAO.insertPost(userId, subject, content, imagePath);
-		
+
 	}
-	
+
 }

@@ -24,12 +24,12 @@ public class PostRestController {
 	@Autowired
 	private PostBO postBO;
 	
-	// 테스트용 컨트롤러
-	@RequestMapping("/posts")
-	public List<Post> posts() {
-		List<Post> postList = postBO.getPostList(); // 디버깅으로 확인가능
-		return postList;
-	}
+	/*
+	 * // 테스트용 컨트롤러
+	 * 
+	 * @RequestMapping("/posts") public List<Post> posts() { List<Post> postList =
+	 * postBO.getPostList(); // 디버깅으로 확인가능 return postList; }
+	 */
 
 	@PostMapping("/create")
 	public Map<String, Object> create(

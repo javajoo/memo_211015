@@ -21,7 +21,8 @@
 				<c:forEach items="${postList}" var="postList">
 					<tr>
 						<td>${postList.id}</td>
-						<td>${postList.subject}</td>
+						<!-- postid id에 도메인명 붙여주는게 좋다 -->
+						<td><a href="/post/post_detail_view?postId=${postList.id}">${postList.subject}</a></td>
 						<td>
 							<!-- date -> string 변환 바로출력(var X)--> 
 							<fmt:formatDate	value="${postList.createdAt}" pattern="yyyy-MM-dd HH:mm:ss" />
