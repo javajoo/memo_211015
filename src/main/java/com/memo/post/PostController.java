@@ -27,14 +27,14 @@ public class PostController {
 	 * @param model
 	 * @return
 	 */
+	// 로그인 안되어있으면 주소로 안들어가진다
 	//localhost/post/post_list_view
 	@RequestMapping("/post_list_view")
 	public String postListView(Model model, HttpServletRequest request) {
 		
-		// 글쓰닝 정보를 가져오기 위해 세션에서 userId를 꺼낸다.
+		// 글쓴이 정보를 가져오기 위해 세션에서 userId를 꺼낸다.
 		HttpSession session = request.getSession();
 		int userId = (int) session.getAttribute("userId");
-		
 		// 글목록 DB에서 가져오기
 		List<Post> postList = postBO.getPostListByUserId(userId);
 		
@@ -58,6 +58,7 @@ public class PostController {
 		return "template/layout";
 	}
 
+	// 로그인 안되어있으면 주소로 안들어가진다
 	//localhost/post/post_detail_view
 	@RequestMapping("/post_detail_view")
 	public String postDetailView(
@@ -69,7 +70,7 @@ public class PostController {
 		
 		Post post = postBO.getPostById(postId); //디버깅
 		
-		model.addAttribute("post","post");
+		model.addAttribute("post",post); // 키 : 값 
 		model.addAttribute("viewName","post/post_detail");
 		return "template/layout";
 	}

@@ -18,17 +18,18 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${postList}" var="postList">
+				<c:forEach items="${postList}" var="post">
 					<tr>
-						<td>${postList.id}</td>
+						<td>${post.id}</td>
 						<!-- postid id에 도메인명 붙여주는게 좋다 -->
-						<td><a href="/post/post_detail_view?postId=${postList.id}">${postList.subject}</a></td>
+						
+						<td><a href="/post/post_detail_view?postId=${post.id}">${post.subject}</a></td>
 						<td>
 							<!-- date -> string 변환 바로출력(var X)--> 
-							<fmt:formatDate	value="${postList.createdAt}" pattern="yyyy-MM-dd HH:mm:ss" />
+							<fmt:formatDate	value="${post.createdAt}" pattern="yyyy-MM-dd HH:mm:ss" />
 						</td>
 						<td>
-							<fmt:formatDate value="${postList.updatedAt}" pattern="yyyy-MM-dd HH:mm:ss" />
+							<fmt:formatDate value="${post.updatedAt}" pattern="yyyy-MM-dd HH:mm:ss" />
 						</td>
 					</tr>
 				</c:forEach>
