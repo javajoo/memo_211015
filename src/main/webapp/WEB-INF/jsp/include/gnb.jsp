@@ -13,7 +13,7 @@
 	<div class="col-2 mt-4">
 		<c:if test="${not empty userName}">
 			<span><b>${userName}</b><span class="text-dark">님 안녕하세요</span></span>
-			<div><a href="/user/sign_out" class="font-weight-bold">로그아웃</a></div>
+			<div><a href="/user/sign_out" class="font-weight-bold text-info">로그아웃</a></div>
 		</c:if>
 	</div>
 </div>

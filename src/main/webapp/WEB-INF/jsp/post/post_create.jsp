@@ -19,9 +19,9 @@
 			</div>
 
 			<div class="d-flex justify-content-around pb-5">
-				<button type="button" id="postListBtn" class="btn btn-dark ml-5 col-2">목록</button>
-				<button type="button" id="clearBtn" class="btn btn-secondary col-2">모두 	지우기</button>
-				<button  type="button" id="saveBtn" class="btn btn-info col-2 mr-5">저장</button>
+				<button type="button" id="postListBtn" class="btn btn-info col-2">목록</button>
+				<button type="button" id="clearBtn" class="btn btn-info col-2">모두 	지우기</button>
+				<button  type="button" id="saveBtn" class="btn btn-info col-2">저장</button>
 			</div>
 		</div>
 	</div>

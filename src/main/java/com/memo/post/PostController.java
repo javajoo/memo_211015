@@ -71,6 +71,7 @@ public class PostController {
 		Post post = postBO.getPostById(postId); //디버깅
 		
 		model.addAttribute("post",post); // 키 : 값 
+		// "post" : 내가 내릴 이름 , post: 객체 
 		model.addAttribute("viewName","post/post_detail");
 		return "template/layout";
 	}

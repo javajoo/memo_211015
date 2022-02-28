@@ -20,6 +20,12 @@ public class FileManagerService {
 	//C:\김은주java\6_spring_project\memo\workspace\images/
 	//학원 경로
 	//D:\김은주\6_spring-project\memo\workspace\images/
+	
+	// 파일 업로드용 주소 -> images
+	// 우리가 임의로 올리는 이미지 주소 -> image
+	// 위의 주소를다르게 설정해야 한다 -> 우선적으로 파일 업로드용 주소가 뜨게 된다.
+	
+	
 	public String saveFile(String userLoginId, MultipartFile file) {
 		// 파일 디렉토리 경로 예: kimje205_165434132/sun.png (아이디 + 시간 + 이미지)
 		// 파일명이 겹치지 않게 하기 위해 현재시간을 경로에 붙여준다.
