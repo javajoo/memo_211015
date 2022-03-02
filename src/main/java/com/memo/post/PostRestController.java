@@ -1,7 +1,6 @@
 package com.memo.post;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,13 +8,13 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.memo.post.bo.PostBO;
-import com.memo.post.model.Post;
 
 @RestController
 @RequestMapping("/post")
@@ -31,6 +30,14 @@ public class PostRestController {
 	 * postBO.getPostList(); // 디버깅으로 확인가능 return postList; }
 	 */
 
+	/**
+	 * 글쓰기
+	 * @param subject
+	 * @param content
+	 * @param file
+	 * @param request
+	 * @return
+	 */
 	@PostMapping("/create")
 	public Map<String, Object> create(
 			@RequestParam("subject") String subject,
@@ -64,6 +71,40 @@ public class PostRestController {
 		
 		return result;
 	}
+	
+	
+	@PutMapping("/update")
+	public Map<String, Object> update(
+			@RequestParam("postId") int postId, // 누구의 id인지 테이블명 앞에 붙여줘야 한다
+			@RequestParam("subject") String subject,
+			@RequestParam(value="content", required = false) String content,
+			@RequestParam(value="file", required = false) MultipartFile file,
+			HttpServletRequest request
+			) {
+		
+		
+ 		HttpSession session = request.getSession(); // 디버깅
+		
+		// 로그인될때 저장해둔 세션을 get으로 꺼내온다.
+		String userLoginId = (String) session.getAttribute("userLoginId");
+		int userId = (int) session.getAttribute("userId"); // 필수값, null이면 안됨!!
+		
+		Map<String, Object> result = new HashMap<>();
+		result.put("result", "success");
+		
+		// update DB
+		int row = postBO.updatePost(postId, userLoginId, userId, subject, content, file);
+		if (row < 1) {
+			result.put("result", "error");
+			result.put("errorMessage", "메모 수정에 실패했습니다.");
+		}
+		
+		return result;
+		
+		
+	}
+	
+	
 }
 
 

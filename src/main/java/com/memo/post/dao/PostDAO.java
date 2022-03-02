@@ -23,4 +23,14 @@ public interface PostDAO {
 			@Param("content") String content,
 			@Param("imagePath") String imagePath
 			);
+	
+	public int updatePostByUserIdPostId( // where절에 들어가는 필드는 메서드명뒤에 붙여준다.
+			@Param("userId") int userId,
+			@Param("postId") int postId, 
+			@Param("subject") String subject,
+			@Param("content") String content,
+			@Param("imagePath") String imagePath
+			);
+	
+	
 }

@@ -56,4 +56,18 @@
  			,NOW()
  		)
  	</insert>
+ 	
+ 	<update id="updatePostByUserIdPostId" parameterType="map">
+ 		UPDATE `post`
+ 		SET
+ 			`subject` = #{subject}
+ 			,`content` = #{content}
+ 			<!-- imagePath가 있을때만 수정한다. -->
+ 			<!-- null이 아닐때 -->
+ 			<if test="imagePath != null">, `imagePath` = #{imagePath} </if>
+ 			, `updatedAt` = NOW()
+ 		WHERE
+ 			`id` = #{postId} <!-- 왼쪽:db 오른쪽: dao 파라미터 -->
+ 			AND `userId` = #{userId}
+ 	</update>
  </mapper>

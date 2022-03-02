@@ -25,7 +25,7 @@ public class FileManagerService {
 	// 우리가 임의로 올리는 이미지 주소 -> image
 	// 위의 주소를다르게 설정해야 한다 -> 우선적으로 파일 업로드용 주소가 뜨게 된다.
 	
-	
+	// 파일 업로드
 	public String saveFile(String userLoginId, MultipartFile file) {
 		// 파일 디렉토리 경로 예: kimje205_165434132/sun.png (아이디 + 시간 + 이미지)
 		// 파일명이 겹치지 않게 하기 위해 현재시간을 경로에 붙여준다.
@@ -56,4 +56,35 @@ public class FileManagerService {
 		
 	}
 	
+	// 파일 삭제
+	public void deleteFile(String imagePath) {
+		// imagePath의 /images/kimje205_165434132/sun.png 에서 /images/ 를 제거한 path를 실제 저장경로 뒤에 붙인다.
+		Path path = Paths.get(FILE_UPLOAD_PATH + imagePath.replace("/images/", "")); // 중복된 문자열을 빈문자열로 바꿔준다. // 디버깅
+		
+		if (Files.exists(path)) { // 이미지 파일이 있으면 삭제
+			try {
+				Files.delete(path);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
+		}
+		
+		// 폴더(디렉토리) 삭제
+		path = path.getParent(); // 사진의 부모인 폴더
+		
+		if (Files.exists(path)) {
+			try {
+				Files.delete(path);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
+	}
+	
 }
+
+
+
+
