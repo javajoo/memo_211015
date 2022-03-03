@@ -70,4 +70,13 @@
  			`id` = #{postId} <!-- 왼쪽:db 오른쪽: dao 파라미터 -->
  			AND `userId` = #{userId}
  	</update>
+ 	
+ 	<delete id="deletePostByUserIdPostId" parameterType="map">
+ 		DELETE 
+ 		FROM 
+ 			`post`
+ 		WHERE
+ 			`id` = #{postId}   <!-- postId로 넘기긴 했지만 원래는 id다!! -->
+ 			AND `userId` = #{userId}
+ 	</delete>
  </mapper>

@@ -15,7 +15,7 @@ public class WebMvcConfig implements WebMvcConfigurer{
 		registry
 		// http://localhost/images/kimje205_165434132/sun.png
 		.addResourceHandler("/images/**") 	// ** 모든 주소
-		.addResourceLocations("file:///C:\\김은주java\\6_spring_project\\memo\\workspace\\images/"); 
+		.addResourceLocations("file:///D:\\김은주\\6_spring-project\\memo\\workspace\\images/"); 
 		//집
 		//C:\김은주java\6_spring_project\memo\workspace\images/
 		//학원 경로

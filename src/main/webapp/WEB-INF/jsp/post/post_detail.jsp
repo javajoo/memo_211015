@@ -26,7 +26,7 @@
 			</c:if>
 			
 			<div class="d-flex justify-content-around pb-4 pt-2">
-				<button type="button" id="postDeleteBtn" class="btn btn-info col-2"><b>삭제</b></button>
+				<button type="button" id="postDeleteBtn" class="btn btn-info col-2" data-post-id="${post.id}"><b>삭제</b></button>
 				<!-- <a>태그로 해도 되고 script로 해도 된다 -->
 				<button type="button" id="postListBtn" class="btn btn-info col-2">목록</button>
 				<!-- 저장버튼에다가 postId를 심어준다. -->
@@ -111,8 +111,31 @@
 						alert('메모 저장에 실패했습니다. 관리자에게 문의해주세요.');
 					}
 				});
+			});
+			
+			// 삭제 버튼 클릭
+			$('#postDeleteBtn').on('click',function(e) {
+				//alert('click');
+				var postId = $(this).data('post-id');
+				console.log(postId);
 				
-				
+				// ajax
+				$.ajax({
+					type: 'DELETE'
+					,url: '/post/delete'
+					,data: {"postId" : postId}
+					,success: function(data) {
+						if(data.result == 'success') {
+							alert('삭제되었습니다.');
+							location.href="/post/post_list_view"; // 목록 페이지로 이동
+						} else {
+							alert(data.errorMessage);
+						}
+					}
+					, error: function(e) {
+						alert('메모를 삭제하는데 실패했습니다. 관리자에게 문의해주세요.');
+					}
+				});
 			});
 		});
 	</script>
