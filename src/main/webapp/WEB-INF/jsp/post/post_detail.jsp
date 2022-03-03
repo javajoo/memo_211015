@@ -25,7 +25,7 @@
 				</div>
 			</c:if>
 			
-			<div class="d-flex justify-content-around pb-5">
+			<div class="d-flex justify-content-around pb-4 pt-2">
 				<button type="button" id="postDeleteBtn" class="btn btn-info col-2"><b>삭제</b></button>
 				<!-- <a>태그로 해도 되고 script로 해도 된다 -->
 				<button type="button" id="postListBtn" class="btn btn-info col-2">목록</button>
@@ -62,6 +62,7 @@
 				}
 				
 				var content = $('#content').val();
+				
 				var file = $('#file').val(); // 파일 경로만 가져온다.
 				//alert(file);    
 				console.log(file);//C:\fakepath\mainImage.jpg

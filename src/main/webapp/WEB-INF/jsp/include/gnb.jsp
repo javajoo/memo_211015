@@ -5,7 +5,7 @@
 
 <div class="d-flex pt-3">
 	<div class="col-2"></div>
-	<div class="display-4 font-weight-bold text-center col-8">Memo Board</div>
+	<div class="display-4 font-weight-bold text-center col-8"><a href="/user/sign_in_view" class="logo">Memo Board</a></div>
 	
 	
 	

@@ -18,7 +18,7 @@
 				<input type="file" id="file" name="file" class=" my-3 mr-5" accept=".png,.jpg,.gif,.jpeg"> <!-- mt-3 mb-3  = my-3 -->
 			</div>
 
-			<div class="d-flex justify-content-around pb-5">
+			<div class="d-flex justify-content-around pb-4 pt-2">
 				<button type="button" id="postListBtn" class="btn btn-info col-2">목록</button>
 				<button type="button" id="clearBtn" class="btn btn-info col-2">모두 	지우기</button>
 				<button  type="button" id="saveBtn" class="btn btn-info col-2">저장</button>
