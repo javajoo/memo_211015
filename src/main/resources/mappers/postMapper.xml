@@ -16,7 +16,28 @@
  			`post`
  		WHERE
  			`userId` = #{userId}
+ 		<!-- direction이 null이면  첫페이지 -->
+ 		<if test="direction == null">
  		ORDER BY `id` DESC
+ 		</if> 
+ 		
+ 		<!-- direction이 next이면 다음 -->
+ 		<if test="direction == 'next'">
+ 			<![CDATA[
+ 			AND `id` < #{standardId}
+ 			]]>
+ 		ORDER BY `id` DESC
+ 		</if>
+ 		
+ 		<!-- direction이 prev이면 이전 -->
+ 		<if test="direction == 'prev'">
+ 			<![CDATA[
+ 			AND `id` > #{standardId}
+ 			]]>
+ 		ORDER BY `id` ASC
+ 		</if>
+ 		
+ 		LIMIT ${limit} <!-- 모두 다 해당되서 밖에서 뺀다 --> <!-- $로 받으면 "" 가 없다 값이 아닌 쿼리의 예약어 이기 때문에 -->
  	</select>
  	
  	<select id="selectPostById" parameterType="int" resultType="com.memo.post.model.Post">
@@ -79,4 +100,15 @@
  			`id` = #{postId}   <!-- postId로 넘기긴 했지만 원래는 id다!! -->
  			AND `userId` = #{userId}
  	</delete>
+ 	
+ 	<select id="selectPostByUserIdSort" parameterType="map" resultType="int">
+ 		SELECT
+ 			`id`
+ 		FROM
+ 			`post`
+ 		WHERE
+ 			`userId` = #{userId}
+ 		ORDER BY `id` ${sort}
+ 		LIMIT 1
+ 	</select>
  </mapper>

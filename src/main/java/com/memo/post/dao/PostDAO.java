@@ -11,7 +11,11 @@ import com.memo.post.model.Post;
 public interface PostDAO {
 
 	// select 부분 묶기
-	public List<Post> selectPostListByUserId(int userId);
+	public List<Post> selectPostListByUserId(
+			@Param("userId") int userId, 
+			@Param("direction") String direction,  
+			@Param("standardId") Integer standardId, 
+			@Param("limit") int limit);
 	
 	public Post selectPostById(int id);
 	
@@ -36,5 +40,13 @@ public interface PostDAO {
 			@Param("userId") int userId,
 			@Param("postId") int postId
 			);
+	
+	public boolean isLastPage(
+			@Param("") int userId,
+			@Param("") int nextId);
+	
+	public int selectPostByUserIdSort(
+			@Param("userId") int userId, 
+			@Param("sort") String sort);
 	
 }

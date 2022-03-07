@@ -36,6 +36,17 @@
 			</tbody>
 		</table>
 
+		<!-- 페이징 -->
+		<div class="d-flex justify-content-around mb-5 mt-5">
+			<c:if test="${prevId != 0}">
+				<a href="/post/post_list_view?prevId=${prevId}">&lt;&lt; 이전</a>
+			</c:if>
+			<c:if test="${nextId != 0}">
+				<a href="/post/post_list_view?nextId=${nextId}"> 다음 &gt;&gt;</a>
+			</c:if>
+		</div>
+
+
 		<!-- div에 float를 써서 내가 원하는 위치에 놓을 수 있다 이걸 쓰면 밑에 태그에는 clear 해줘야 한다 -->
 		<div class="float-right">
 		<!-- 화면으로 이동할때는 <a> 태그 사용해서 페이지만 넘겨준다 -->

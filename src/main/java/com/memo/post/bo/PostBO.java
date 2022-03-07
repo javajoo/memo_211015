@@ -1,6 +1,7 @@
 package com.memo.post.bo;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -31,10 +32,40 @@ public class PostBO {
 	// FileManagerService의 @Component 사용하려면 새로 @Autowired 해줘야 한다!!!!
 	@Autowired
 	private FileManagerService fileManager;
+	
+	// 값이 변경 안되게 설정
+	private static final int POST_MAX_SIZE = 3;
 
 	//alt + shift + r: 부르고 있는 애들 이름다 바꾼다
-	public List<Post> getPostListByUserId(int userId) {
-		return postDAO.selectPostListByUserId(userId);
+	public List<Post> getPostListByUserId(int userId, Integer prevId, Integer nextId) {
+		// 페이징
+		// 10 9 8 | 7 6 5 | 4 3 2 | 1 
+		
+		// 예를 들어 7 6 5 페이지에서 
+		// 1) 다음 눌렀을 때 : nextId-5 => 5보다 작은 3개 => 4 3 2 DESC 역방향
+		// 2) 이전 눌렀을 때 : prevId-7 => 7보다 큰 3개 => 8 9 10 ASC 정방향 => 코드에서 데이터를 reverse 
+		// 3) 첫 페이지로 들어왔을 때 10 9 8 DESC
+		
+		
+		// 첫페이지는 방향이 없다
+		String direction = null; 
+		Integer standardId  = null;
+		if (nextId != null) { // 다음으로 클릭 되었을 때 
+			direction = "next";
+			standardId = nextId;
+			return postDAO.selectPostListByUserId(userId, direction, standardId, POST_MAX_SIZE);
+		} else if (prevId != null) { // 이전으로 클릭 되었을 때
+			direction = "prev";
+			standardId = prevId;
+			List<Post> postList = postDAO.selectPostListByUserId(userId, direction, standardId, POST_MAX_SIZE);
+			// 7보다 큰 3개 8 9 10이 나오므로 List를 reverse 정렬 시킨다.
+			
+			Collections.reverse(postList); // void 
+			return postList; // 바꾸고 나서 반드시 리턴 해줘야 한다.
+		}
+		
+		// 첫 페이지로 들어올 때
+		return postDAO.selectPostListByUserId(userId, direction, standardId, POST_MAX_SIZE);
 	}
 	
 	// 단건
@@ -106,6 +137,8 @@ public class PostBO {
 	}
 	
 	public int deletePostByUserIdPostId (int postId, int userId) { // 내 글일때만 글을 삭제해야 하니까 세션으로 받아온 파라미터 넣어준다.
+	
+		
 		
 		// 삭제 전에 게시글을 먼저 가져와 본다. (imagePath가 있을 수 있기 때문에)
 		Post post = getPostById(postId); 
@@ -131,5 +164,13 @@ public class PostBO {
 		
 	}
 	
+	public boolean isLastPage(int userId, int nextId) { // ASC LIMIT 1 최소 postId값
+		return nextId == postDAO.selectPostByUserIdSort(userId, "ASC"); 
+		// true, false 둘중에 하나 리턴된다.
+	}
+	
+	public boolean isFirstPage(int userId, int prevId) { // DESC LIMIT 1 최대 postId값
+		return prevId == postDAO.selectPostByUserIdSort(userId, "DESC"); 
+	}
 
 }
